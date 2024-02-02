@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include("./partials/bootcss") %>
+    <title>add blog</title>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+    <form action="/blog" method="post" enctype="multipart/form-data">
+      <div class="container my-4" data-bs-theme="dark">
+        <div>
+          <label for="exampleFormControlTextarea1" class="form-label">
+            Upload Cover image of your blog</label
+          >
+        </div>
+        <div class="input-group mb-3">
+          <input
+            type="file"
+            class="form-control"
+            id="inputGroupFile02"
+            name="coverimageurl"
+          />
+
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Title of Blog ( Only 50 character)</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            maxlength="50"
+            name="title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">
+            Blog in Deatil</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="7"
+            name="blog"
+          ></textarea>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-secondary" type="submit">Publish</button>
+
+        </div>
+      </div>
+    </form>
+
+    %> <%- include("./partials/bootscript") %>
+  </body>
+</html>

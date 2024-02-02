@@ -3,6 +3,7 @@ import path from "path"
 import mongoose from 'mongoose'
 import cookieParser from 'cookie-parser'
 import userroute from "./routes/user.js"
+import blogroute from './routes/blogs.js'
 import { chekcforauthcooke } from './middleware/auth.js'
 const app = express()
 const port = 3000
@@ -13,7 +14,11 @@ app.set("views", path.resolve("./","views"))
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser())
 app.use(chekcforauthcooke("uid"))
+app.use(express.static(path.resolve('./images')))
+
+
 app.use("/",userroute)
+app.use("/",blogroute)
 
 
 

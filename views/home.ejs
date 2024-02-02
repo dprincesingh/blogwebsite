@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%- include("./partials/bootcss") %>
     <title>Home Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include("./partials/nav") %>
-    
-  
-    %>
 
-    <%- include("./partials/bootscript") %>
-</body>
+    <div class="container my-4">
+      <div class="row">
+        <% blogs.forEach(blog => { %>
+
+        <div class="card mb-2 mx-2" style="width: 18rem">
+          <img src="<%= blog.coverimageurl %>" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title"><%= blog.title %></h5>
+            <p class="card-text"><%= blog.blog.slice(0,100) %></p>
+            <a href="/readblog/<%= blog._id %>" class="btn btn-primary"target="_blank">Read</a>
+          </div>
+        </div>
+
+        <% }) %>
+      </div>
+    </div>
+    <style>
+      .card {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        cursor: pointer;
+      }
+      .card-descend {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .card:hover {
+        transform: translateY(-10px); /* Ascending effect on hover */
+      }
+
+      .card:hover.card-descend {
+        transform: translateY(
+          10px
+        ); 
+      }
+    </style>
+
+    <%- include("./partials/footer") %> <%- include("./partials/bootscript") %>
+  </body>
 </html>
